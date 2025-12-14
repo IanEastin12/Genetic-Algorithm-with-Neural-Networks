@@ -29,17 +29,12 @@ function setup() {
   drawnNodes = new p5.TypedDict();
   drawnCons = new p5.TypedDict();
 
-  //creature = new Creature(0, createVector(200, 200), cells);
-  //creature.brain.totalConnections = [new Node("popDensFor", false), 0.5, new Node("n1", true), new Node("n2", true), 0.5, new Node("n1", true), new Node("n2", true), 0.5, new Node("movR", false), new Node("n1", false), 0.5, new Node("n2", false), new Node("n1", false), 0.5, new Node("n1", false)];
-  //creature.brain.build(1, 4, true);
-  //creature.brain.think();
-
   for (let i = 0; i < numCreatures; i++) {
     let pos = createVector(floor(random(w)), floor(random(h)));
     cells[floor(pos.y)][floor(pos.x)] = 1;
     creatures[i] = new Creature(0, pos, cells);
   }
-  noLoop();
+  //noLoop();
 }
 
 function draw() {
@@ -176,12 +171,12 @@ function drawStats() {
   text(`Number of Connections: ${numCon}`, w + 10, 95);
   text(`Number of Internal Neurons: ${4}`, w + 10, 115);
   text(`Mutation Rate: ${muteRate}`, w + 10, 135);
-  line(w / 2, 0, w / 2, h);
-  if (generation >= 50) rect(w / 2 - 2, h / 4, 4, h / 2);
-  /*line(26, 0, 26, h);
+  //line(w / 2, 0, w / 2, h);
+  //if (generation >= 50) rect(w / 2 - 2, h / 4, 4, h / 2);
+  line(26, 0, 26, h);
   line(38, 0, 38, h);
   line(90, 0, 90, h);
-  line(102, 0, 102, h);*/
+  line(102, 0, 102, h);
 }
 
 function nextGeneration() {
@@ -194,10 +189,10 @@ function nextGeneration() {
   //Selection
   for (let c of creatures) {
     if (
-      /*c.pos.x > 26 && c.pos.x < 38 ||
-       c.pos.x > 90 && c.pos.x < 102*/ c
+      c.pos.x > 26 && c.pos.x < 38 ||
+       c.pos.x > 90 && c.pos.x < 102 /*c
         .pos.x >
-      w / 2
+      w / 2*/
     )
       parents.push(c);
   }
@@ -216,8 +211,6 @@ function nextGeneration() {
   }
 
   for (let i = 0; i < parents.length; i++) {
-    /*let p1 = parents[round(random(parents.length - 1))];
-    let p2 = parents[round(random(parents.length - 1))];*/
     let p1 = parents[i];
     let possibleMates = [];
     let p2;

@@ -47,7 +47,7 @@ class Creature {
       } 
     }
     
-    if(this.pos.x > w/2 - 2 && this.pos.x < w/2 + 2 && this.pos.y > h/4 && this.pos.y < 3*h/4 && generation >= 50) this.pos.x = w/2 - 3;
+    //if(this.pos.x > w/2 - 2 && this.pos.x < w/2 + 2 && this.pos.y > h/4 && this.pos.y < 3*h/4 && generation >= 50) this.pos.x = w/2 - 3;
     cells[prevPos.y][prevPos.x] = 0;
     cells[this.pos.y][this.pos.x] = 1;
     this.senses.prevPos = prevPos;
